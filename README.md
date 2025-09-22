@@ -19,3 +19,8 @@ You can deploy your new Vite project with a single command from your terminal us
 ```shell
 $ vercel
 ```
+
+We use [Tiled](https://www.mapeditor.org/) to generate the maps.
+
+export visible layers as image
+export using current zoom level
