@@ -68,7 +68,10 @@ function App() {
   }
 
   function animate() {
-    if (!ctxRef.current) return
+    if (!ctxRef.current) {
+      console.log('ctxRef.current is null')
+      return
+    }
     background.draw({ctx: ctxRef.current, drawImageProps: { 
       image: mapImage,
       dx: background.props.position.x,
@@ -88,6 +91,7 @@ function App() {
     const amountOfPressedKeys = Object.values(keysRef.current).filter(key => key.pressed).length
     const squareRootOfTwo = 2 ** 0.5
     const nomalizedSpeed = amountOfPressedKeys > 1 ? SPEED / squareRootOfTwo : SPEED
+    console.log(nomalizedSpeed)
     if (keysRef.current.a.pressed) {
       background.props.position.x += nomalizedSpeed
     }
@@ -102,7 +106,6 @@ function App() {
     }
     window.requestAnimationFrame(animate)
   }
-  animate()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -130,6 +133,7 @@ function App() {
       playerLoaded = true
       draw( ctx, canvas, mapLoaded, playerLoaded, mapImage, playerImage)
     }
+    animate()
 
   
   }, [])
